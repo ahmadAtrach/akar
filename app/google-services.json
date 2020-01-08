@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "211095984641",
+    "firebase_url": "https://akar-db-a6b8c.firebaseio.com",
+    "project_id": "akar-db-a6b8c",
+    "storage_bucket": "akar-db-a6b8c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211095984641:android:a7df0d5383a5c2bd17be00",
+        "android_client_info": {
+          "package_name": "com.akkar.akar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211095984641-fh1qa5ipl7n7k4qilt87aln2e4cat4et.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.akkar.akar",
+            "certificate_hash": "c5ed3c7dd3ea767a83806ce10c8016c2f72726ac"
+          }
+        },
+        {
+          "client_id": "211095984641-e2edg0o64vhtdaodtuefgaq8mqf8e1a8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEv_plJ4M0QwjBE2nLiEfH7P_RJK-vk6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "211095984641-e2edg0o64vhtdaodtuefgaq8mqf8e1a8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

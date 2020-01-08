@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Akarr</string>
+    <string name="splash_text">All Right Reserved AhmadAtrach@2019</string>
+    <string name="sign_in_text0">You already have an account?</string>
+    <string name="sign_in_text1">Sign in</string>
+    <string name="create_account_button">Create Account</string>
+    <string name="or">Or Register With</string>
+    <string name="Username">Username</string>
+    <string name="password">Password</string>
+    <string name="email">Mail@example.com</string>
+    <string name="reqeated_email">Repeat Your Email</string>
+    <string name="input_error_name">please enter the name</string>
+    <string name="input_error_email">please enter the mail</string>
+    <string name="input_error_email_invalid">email is invalid</string>
+    <string name="input_error_password">please enter the password</string>
+    <string name="input_error_password_length">password should be greater then 8 characters</string>
+    <string name="input_error_email_didnot_match">email does not match with the mail</string>
+    <string name="registration_success">registration success</string>
+</resources>
