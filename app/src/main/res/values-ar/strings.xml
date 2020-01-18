@@ -4,6 +4,7 @@
     <string name="splash_text">All Right Reserved AhmadAtrach@2019</string>
     <string name="sign_in_text0">هل لديك حساب بالفعل ؟</string>
     <string name="sign_in_text1">تسجيل دخول</string>
+    <string name="sign_up_text">انشاء حساب</string>
     <string name="create_account_button">انشاء حساب</string>
     <string name="or">أو سجل عبر</string>
     <string name="Username"> اسم المستخدم</string>
@@ -19,4 +20,5 @@
     <string name="registration_success">registration success</string>
     <string name="welocme_text">مرحبا !</string>
     <string name="bestchoice_text">عقار افضل تطبيق لشراء و بيع العقارات </string>
+    <string name="policies">بضغطك تسجيل دخول فانك توافق على سياسة الخصوصية خاصتنا</string>
 </resources>

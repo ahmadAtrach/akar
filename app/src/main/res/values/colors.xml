@@ -6,4 +6,5 @@
     <color name="colorSecond">#A2EDCE</color>
     <color name="color_white">#ffffff</color>
     <color name="color_black">#000000</color>
+    <color name="color_gray">#A3A3A3</color>
 </resources>
