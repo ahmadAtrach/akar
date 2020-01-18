@@ -16,4 +16,6 @@
     <string name="input_error_password_length">password should be greater then 8 characters</string>
     <string name="input_error_email_didnot_match">email does not match with the mail</string>
     <string name="registration_success">registration success</string>
+    <string name="welocme_text">Welcome</string>
+    <string name="bestchoice_text">Akar is te best choice to find your property</string>
 </resources>

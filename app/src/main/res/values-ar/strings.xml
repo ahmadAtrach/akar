@@ -17,4 +17,6 @@
     <string name="input_error_password_length">كلمة المرور يجب ان تتكوند اكثر من 8 رموز </string>
     <string name="input_error_email_didnot_match">يجب ان يتطابق الابريد الكتروني</string>
     <string name="registration_success">registration success</string>
+    <string name="welocme_text">مرحبا !</string>
+    <string name="bestchoice_text">عقار افضل تطبيق لشراء و بيع العقارات </string>
 </resources>

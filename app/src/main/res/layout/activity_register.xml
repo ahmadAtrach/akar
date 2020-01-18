@@ -11,12 +11,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="212dp"
-        android:layout_height="155.8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="105dp"
         android:layout_marginEnd="105dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/house" />
 
@@ -35,7 +36,7 @@
         android:onClick="onClick"
         android:text="@string/create_account_button"
         android:textAllCaps="false"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/color_white"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +62,7 @@
             android:fontFamily="@font/arabiclight"
             android:paddingRight="3dp"
             android:text="@string/sign_in_text0"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorPrimary"
             android:textSize="12sp" />
 
         <TextView
@@ -72,7 +73,7 @@
             android:fontFamily="@font/arabiclight"
             android:paddingRight="3dp"
             android:text="@string/sign_in_text1"
-            android:textColor="@color/color_white"
+            android:textColor="@color/colorSecond"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -115,7 +116,7 @@
         android:layout_marginEnd="189dp"
         android:fontFamily="@font/arabiclight"
         android:text="@string/or"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -129,7 +130,7 @@
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/arabiclight"
         android:text="@string/create_account_button"
-        android:textColor="@color/color_white"
+        android:textColor="@color/colorPrimary"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
