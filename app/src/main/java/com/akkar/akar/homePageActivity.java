@@ -1,7 +1,9 @@
 package com.akkar.akar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,6 +20,7 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
 {
     Fragment homePage = new homeFragment();
     TextView title;
+    Intent addProperty;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,12 +30,16 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
         navigation.setOnNavigationItemSelectedListener(this);
         title = (TextView) findViewById(R.id.title);
         title.setText(getResources().getString(R.string.title_home));
+        addProperty =  new Intent(this, addProportyActivity.class);
         loadFragment(homePage);
 
     }
+    public void addPropertyClick(View v){
+        startActivity(addProperty);
+    }
+
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment fragment;
         switch (item.getItemId()) {
             case R.id.navigation_home:
                 title.setText(getResources().getString(R.string.title_home));
