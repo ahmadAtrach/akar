@@ -24,6 +24,7 @@
         app:srcCompat="@drawable/floatingbutton" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:itemHorizontalTranslationEnabled="false"
@@ -39,10 +40,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/arabiclight"
         android:text="TextView"
+        android:textColor="@color/colorPrimary"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/frameContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
