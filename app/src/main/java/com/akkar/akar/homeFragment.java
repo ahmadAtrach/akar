@@ -1,11 +1,11 @@
 package com.akkar.akar;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -18,7 +18,8 @@ import androidx.fragment.app.Fragment;
  * Use the {@link homeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class homeFragment extends Fragment {
+public class homeFragment extends Fragment  {
+    TextView tochange;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,6 +34,7 @@ public class homeFragment extends Fragment {
     public homeFragment() {
         // Required empty public constructor
     }
+
 
     /**
      * Use this factory method to create a new instance of
@@ -65,11 +67,12 @@ public class homeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
-
         try {
-            return inflater.inflate(R.layout.fragment_home, container, false);
+            View v = inflater.inflate(R.layout.fragment_home, container, false);
+
+            return v;
+
             // ... rest of body of onCreateView() ...
         } catch (Exception e) {
             System.out.println(e);
@@ -78,7 +81,7 @@ public class homeFragment extends Fragment {
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void onButtonPressed(View v) {
         if (mListener != null) {
             mListener.onContentFragmentInteraction("");
         }
@@ -114,4 +117,5 @@ public class homeFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         public void onContentFragmentInteraction(String string);
     }
+
 }

@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.akkar.akar"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -20,6 +20,11 @@ android {
 }
 
 dependencies {
+
+    // volley http library
+    implementation 'com.google.code.gson:gson:2.6.2'
+    // glide image library
+    implementation 'com.github.bumptech.glide:glide:4.3.1'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
