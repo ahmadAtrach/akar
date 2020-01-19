@@ -23,4 +23,7 @@
     <string name="policies">بضغطك تسجيل دخول فانك توافق على سياسة الخصوصية خاصتنا</string>
     <string name="login_successful">تم تسجيل الدخول</string>
     <string name="login_failed">check password and email</string>
+    <string name="title_search">بحث</string>
+    <string name="title_home">الصفحة الرئيسية</string>
+    <string name="title_profile">الملف الشخصي</string>
 </resources>
