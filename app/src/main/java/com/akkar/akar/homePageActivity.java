@@ -14,10 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 public class homePageActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,
-        homeFragment.OnFragmentInteractionListener,searchFragment.OnFragmentInteractionListener,
-        profileFragment.OnFragmentInteractionListener
-
-{
+        homeFragment.OnFragmentInteractionListener, searchFragment.OnFragmentInteractionListener,
+        profileFragment.OnFragmentInteractionListener {
     Fragment homePage = new homeFragment();
     TextView title;
     Intent addProperty;
@@ -63,9 +61,8 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
             transaction.commit();
         }
     public void onContentFragmentInteraction(String string) {
-        // Do different stuff
+        // Do different stuf
     }
-
 
     @Override
     public void OnFragmentInteractionListener(String string) {
@@ -76,4 +73,6 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
     public void onContentFragmentInteraction2(String string) {
 
     }
+
+
 }
