@@ -12,6 +12,21 @@ public class property {
     private String images_url;
     private String user_id;
 
+
+
+    public property(int id, String title, int price, String type, int bedrooms_nb, int bathrooms_nb, String furnishings, double area, String images_url, String user_id) {
+        this.id = id;
+        this.title = title;
+        this.price = price;
+        this.type = type;
+        this.bedrooms_nb = bedrooms_nb;
+        this.bathrooms_nb = bathrooms_nb;
+        this.furnishings = furnishings;
+        this.area = area;
+        this.images_url = images_url;
+        this.user_id = user_id;
+    }
+
     public int getId() {
         return id;
     }
