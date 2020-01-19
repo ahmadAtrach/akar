@@ -20,4 +20,6 @@
     <string name="welocme_text">Welcome !</string>
     <string name="bestchoice_text">Akar is the best choice to find your property</string>
     <string name="policies">by clicking sign up you are agreeing to the terms of use and acknowledging the privacy policy</string>
+    <string name="login_successful">login successfully</string>
+    <string name="login_failed">check password and email</string>
 </resources>

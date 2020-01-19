@@ -21,4 +21,6 @@
     <string name="welocme_text">مرحبا !</string>
     <string name="bestchoice_text">عقار افضل تطبيق لشراء و بيع العقارات </string>
     <string name="policies">بضغطك تسجيل دخول فانك توافق على سياسة الخصوصية خاصتنا</string>
+    <string name="login_successful">تم تسجيل الدخول</string>
+    <string name="login_failed">check password and email</string>
 </resources>

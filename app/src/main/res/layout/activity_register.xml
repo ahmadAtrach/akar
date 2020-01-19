@@ -22,7 +22,7 @@
         app:srcCompat="@drawable/house" />
 
     <Button
-        android:id="@+id/button_register"
+        android:id="@+id/button_sign_in"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginStart="172dp"
@@ -155,7 +155,7 @@
         android:paddingRight="10dp"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/button_register"
+        app:layout_constraintBottom_toTopOf="@+id/button_sign_in"
         app:layout_constraintEnd_toEndOf="@+id/mail"
         app:layout_constraintStart_toStartOf="@+id/mail" />
 

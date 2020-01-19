@@ -3,6 +3,7 @@ package com.akkar.akar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -34,7 +35,7 @@ public class registerActivity extends AppCompatActivity implements View.OnClickL
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
         mAuth = FirebaseAuth.getInstance();
-        findViewById(R.id.button_register).setOnClickListener(this);
+        findViewById(R.id.button_sign_in).setOnClickListener(this);
     }
 
     @Override
@@ -98,6 +99,7 @@ public class registerActivity extends AppCompatActivity implements View.OnClickL
                             progressBar.setVisibility(View.GONE);
                             if (task.isSuccessful()) {
                                 Toast.makeText(registerActivity.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
+
                             } else {
                                 //display a failure message
                             }
@@ -111,13 +113,13 @@ public class registerActivity extends AppCompatActivity implements View.OnClickL
     }
 
 
-        public void onClick (View v){
-            switch (v.getId()) {
-                case R.id.button_register:
-                    registerUser();
-                    break;
-            }
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_sign_in:
+                registerUser();
+                break;
         }
+    }
 }
 
 
