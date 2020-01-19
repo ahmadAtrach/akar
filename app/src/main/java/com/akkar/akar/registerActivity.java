@@ -21,13 +21,14 @@ public class registerActivity extends AppCompatActivity implements View.OnClickL
     private EditText editTextName, editTextEmail, editTextReapEmail, editTextPassword;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
-
+    private Intent loginpage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         getSupportActionBar().hide();
+        loginpage = new Intent(this,loginActivity.class);
         editTextEmail = (EditText) findViewById(R.id.mail);
         editTextName = (EditText) findViewById(R.id.username);
         editTextReapEmail = (EditText) findViewById(R.id.repeated_mail);
@@ -98,14 +99,16 @@ public class registerActivity extends AppCompatActivity implements View.OnClickL
                         public void onComplete(@NonNull Task<Void> task) {
                             progressBar.setVisibility(View.GONE);
                             if (task.isSuccessful()) {
+                                startActivity(loginpage);
                                 Toast.makeText(registerActivity.this, getString(R.string.registration_success), Toast.LENGTH_LONG).show();
 
                             } else {
-                                //display a failure message
+                                Toast.makeText(registerActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
                     });
                 } else {
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(registerActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
