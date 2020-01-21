@@ -6,8 +6,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -29,11 +32,17 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
     TextView title;
     Intent addProperty;
     private ArrayList<property> propertiesArrayList;
-
+    Button searchButton;
+    EditText searchInput;
+    private ListView listViewproperties;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        searchButton = (Button) findViewById(R.id.searchButton);
+        searchInput =(EditText) findViewById(R.id.searchInput);
+        searchButton.setVisibility(View.GONE);
+        searchInput.setVisibility(View.GONE);
         getSupportActionBar().hide();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
@@ -41,7 +50,7 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
         title.setText(getResources().getString(R.string.title_home));
         addProperty = new Intent(this, addProportyActivity.class);
         this.propertiesArrayList = new ArrayList<property>();
-        final ListView listViewproperties = (ListView) findViewById(R.id.properties);
+        listViewproperties = (ListView) findViewById(R.id.properties);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         String propertyRequestURL = "https://akarr.000webhostapp.com/properties.php";
         JsonArrayRequest propertyJSONRequest = new JsonArrayRequest(
@@ -115,14 +124,43 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
         switch (item.getItemId()) {
             case R.id.navigation_home:
                 title.setText(getResources().getString(R.string.title_home));
+                searchButton.setVisibility(View.GONE);
+                searchInput.setVisibility(View.GONE);
                 return true;
             case R.id.navigation_profile:
                 title.setText(getResources().getString(R.string.title_profile));
+                searchButton.setVisibility(View.GONE);
+                searchInput.setVisibility(View.GONE);
                 return true;
             case R.id.navigation_search:
                 title.setText(getResources().getString(R.string.title_search));
+                searchButton.setVisibility(View.VISIBLE);
+                searchInput.setVisibility(View.VISIBLE);
                 return true;
         }
         return false;
     }
+    public void searchById(View view){
+        ArrayList searched = new ArrayList();
+        EditText editTextId = (EditText) findViewById(R.id.searchInput);
+        if(editTextId.getText().toString().equals("")){
+            Toast.makeText(this,"Please Enter the name", Toast.LENGTH_SHORT).show();
+        }else{
+            String name = (editTextId.getText().toString());
+            for(property property: propertiesArrayList){
+                System.out.println("/////////////////iteration/////////////");
+                if(property.getTitle().equals(name)){
+                    Toast.makeText(this, "one thing found", Toast.LENGTH_LONG).show();
+                    searched.add(property);
+                }
+            }
+            ArrayAdapter searchedpropertyAdapter =
+                    new ArrayAdapter(homePageActivity.this,
+                            android.R.layout.simple_list_item_1,
+                            searched);
+            this.listViewproperties.setAdapter(searchedpropertyAdapter);
+            Toast.makeText(this, "No property have this name", Toast.LENGTH_LONG).show();
+        }
+    }
+
 }
