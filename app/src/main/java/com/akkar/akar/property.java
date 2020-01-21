@@ -66,4 +66,9 @@ public class property {
     public String getUser_id() {
         return user_id;
     }
+
+    @Override
+    public String toString() {
+        return this.title;
+    }
 }

@@ -19,10 +19,16 @@
     <string name="registration_success">registration success</string>
     <string name="welocme_text">Welcome !</string>
     <string name="bestchoice_text">Akar is the best choice to find your property</string>
-    <string name="policies">by clicking sign up you are agreeing to the terms of use and acknowledging the privacy policy</string>
+    <string name="policies">by clicking sign up you are agreeing our the privacy policy</string>
     <string name="login_successful">login successfully</string>
     <string name="login_failed">check password and email</string>
     <string name="title_search">Search</string>
     <string name="title_home">Home</string>
     <string name="title_profile">Profile</string>
+        <string-array name="array">
+            <item>Apartment</item>
+            <item>Land</item>
+            <item>Full floor</item>
+        </string-array>
 </resources>
+

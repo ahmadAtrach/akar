@@ -26,4 +26,9 @@
     <string name="title_search">بحث</string>
     <string name="title_home">الصفحة الرئيسية</string>
     <string name="title_profile">الملف الشخصي</string>
+    <string-array name="array">
+        <item>شقة</item>
+        <item>ارض</item>
+        <item>طابق كامل</item>
+    </string-array>
 </resources>
