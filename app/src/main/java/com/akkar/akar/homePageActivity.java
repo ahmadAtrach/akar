@@ -80,7 +80,7 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                 Intent propertyIntent = new Intent(homePageActivity.this,
-                                addProportyActivity.class);
+                                        viewProperty.class);
                                 propertyIntent.putExtra("Id", propertiesArrayList.get(i).getId());
                                 propertyIntent.putExtra("Type", propertiesArrayList.get(i).getType());
                                 propertyIntent.putExtra("Area", (propertiesArrayList.get(i).getArea()));
