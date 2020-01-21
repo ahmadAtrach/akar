@@ -23,7 +23,7 @@
         app:srcCompat="@drawable/thumbnail" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/txtView_propertyName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -47,10 +47,10 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/txtView_propertyName" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/txtView_propertyType"
         android:layout_width="74dp"
         android:layout_height="19dp"
         android:layout_marginStart="4dp"
@@ -58,7 +58,7 @@
         android:text="Apartment"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/txtView_propertyName" />
 
     <ImageView
         android:id="@+id/imgView_goback"
@@ -111,7 +111,7 @@
         android:text="Jemmayzet, Tripoli, Lebanon"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/txtView_propertyName" />
 
     <ImageView
         android:id="@+id/imageView16"
@@ -201,20 +201,20 @@
         android:textColor="#4D4848"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageView21"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/txtView_propertyType" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/txtView_furniture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="47dp"
         android:layout_marginTop="12dp"
         android:text="Yes"
         app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/txtView_propertyType" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/txtView_bedroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
@@ -222,10 +222,10 @@
         android:inputType="number"
         android:text="4"
         app:layout_constraintStart_toEndOf="@+id/textView18"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toBottomOf="@+id/txtView_furniture" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/txtView_bathroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -233,10 +233,10 @@
         android:inputType="number"
         android:text="2"
         app:layout_constraintStart_toEndOf="@+id/textView20"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+        app:layout_constraintTop_toBottomOf="@+id/txtView_area" />
 
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/txtView_area"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
@@ -245,7 +245,7 @@
         android:layerType="hardware"
         android:text="200"
         app:layout_constraintStart_toEndOf="@+id/textView22"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/txtView_propertyType" />
 
     <ImageView
         android:id="@+id/imageView19"
@@ -263,7 +263,7 @@
         android:layout_height="18dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="9dp"
-        app:layout_constraintStart_toEndOf="@+id/textView19"
+        app:layout_constraintStart_toEndOf="@+id/txtView_bedroom"
         app:layout_constraintTop_toBottomOf="@+id/imageView21"
         app:srcCompat="@drawable/bathrooms" />
 
@@ -273,8 +273,8 @@
         android:layout_height="19dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
-        app:layout_constraintStart_toEndOf="@+id/textView17"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/txtView_furniture"
+        app:layout_constraintTop_toBottomOf="@+id/txtView_propertyType"
         app:srcCompat="@drawable/distance" />
 
     <ImageView
@@ -316,7 +316,7 @@
         android:id="@+id/button3"
         android:layout_width="108dp"
         android:layout_height="42dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="76dp"
         android:background="#49816E"
         android:text="check availability"
         android:textColor="#FFFFFF"
@@ -326,13 +326,13 @@
         app:layout_constraintVertical_bias="0.483" />
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/txtView_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:text="3000"
         android:textColor="#49816E"
-        android:textSize="30sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/bottomAppBar"
@@ -346,7 +346,7 @@
         android:text="$"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/bottomAppBar"
-        app:layout_constraintStart_toEndOf="@+id/textView25"
+        app:layout_constraintStart_toEndOf="@+id/txtView_price"
         app:layout_constraintTop_toTopOf="@+id/bottomAppBar"
         app:layout_constraintVertical_bias="0.673" />
 
