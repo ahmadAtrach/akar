@@ -42,7 +42,6 @@ public class addProportyActivity extends AppCompatActivity {
     private int Id;
     private int a;
     Button b;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -216,5 +215,7 @@ public class addProportyActivity extends AppCompatActivity {
 
         }
     }
+
+
 }
 

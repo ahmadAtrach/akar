@@ -9,6 +9,22 @@
     android:focusableInTouchMode="false"
     tools:context=".homePageActivity">
 
+    <ListView
+        android:id="@+id/properties"
+        android:layout_width="396dp"
+        android:layout_height="611dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="30dp"
+        android:paddingRight="10dp"
+        android:smoothScrollbar="true"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchButton" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -28,6 +44,8 @@
         android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:focusableInTouchMode="false"
+        android:isScrollContainer="false"
         app:itemHorizontalTranslationEnabled="false"
         app:labelVisibilityMode="auto"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,26 +67,101 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/frameContainer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        android:clickable="false"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintEnd_toEndOf="parent"
+    <EditText
+        android:id="@+id/searchInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/input_background"
+        android:ems="10"
+        android:hint="Search"
+        android:inputType="textPersonName"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="10dp"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pagetitle">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ListView
-            android:id="@+id/properties"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible" />
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/button_background"
+        android:onClick="searchById"
+        android:text="@string/title_search"
+        android:textColor="@color/color_white"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/searchInput"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    </FrameLayout>
+    <ImageView
+        android:id="@+id/profileimage"
+        android:layout_width="117dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="72dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profileimage" />
+
+    <TextView
+        android:id="@+id/usernametext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="190dp"
+        android:text="Ahmad Atrach"
+        android:textColor="@color/colorPrimary"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mypropertiestext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="195dp"
+        android:text="My properties"
+        android:textColor="@color/colorPrimary"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pagetitle" />
+
+    <ListView
+        android:id="@+id/myProperties"
+        android:layout_width="379dp"
+        android:layout_height="232dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mypropertiestext" />
+
+    <Button
+        android:id="@+id/signout"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/stroke_button"
+        android:onClick="SignOut"
+        android:text="Sign Out"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/myProperties" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
