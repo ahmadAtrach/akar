@@ -25,11 +25,11 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class homePageActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener
-{
+public class homePageActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     TextView title;
     Intent addProperty;
     private ArrayList<property> propertiesArrayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,21 +39,21 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
         navigation.setOnNavigationItemSelectedListener(this);
         title = (TextView) findViewById(R.id.pagetitle);
         title.setText(getResources().getString(R.string.title_home));
-        addProperty =  new Intent(this, addProportyActivity.class);
-          this.propertiesArrayList = new ArrayList<property>();
-         final ListView listViewproperties = (ListView) findViewById(R.id.properties);
-          RequestQueue requestQueue = Volley.newRequestQueue(this);
-          String propertyRequestURL = "https://akarr.000webhostapp.com/properties.php";
-            JsonArrayRequest propertyJSONRequest = new JsonArrayRequest(
-                    propertyRequestURL,
-                   new Response.Listener<JSONArray>() {
-                        @Override
+        addProperty = new Intent(this, addProportyActivity.class);
+        this.propertiesArrayList = new ArrayList<property>();
+        final ListView listViewproperties = (ListView) findViewById(R.id.properties);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        String propertyRequestURL = "https://akarr.000webhostapp.com/properties.php";
+        JsonArrayRequest propertyJSONRequest = new JsonArrayRequest(
+                propertyRequestURL,
+                new Response.Listener<JSONArray>() {
+                    @Override
                     public void onResponse(JSONArray response) {
                         // System.out.println(response);
-                        for(int i=0; i<response.length(); i++){
+                        for (int i = 0; i < response.length(); i++) {
                             try {
                                 JSONObject propertyJSONObject = response.getJSONObject(i);
-                                property properties= new property(
+                                property properties = new property(
                                         propertyJSONObject.getInt("id"),
                                         propertyJSONObject.getString("title"),
                                         propertyJSONObject.getInt("price"),
@@ -65,13 +65,13 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
                                         propertyJSONObject.getString("images_url"),
                                         propertyJSONObject.getString("user_id")
                                 );
-                               propertiesArrayList.add(properties);
+                                propertiesArrayList.add(properties);
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
                         ArrayAdapter propertyAdapter =
-                        new ArrayAdapter(homePageActivity.this,
+                                new ArrayAdapter(homePageActivity.this,
                                         android.R.layout.simple_list_item_1,
                                         propertiesArrayList);
                         listViewproperties.setAdapter(propertyAdapter);
@@ -79,10 +79,19 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
                                 = new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                Intent drinkIntent = new Intent(homePageActivity.this,
-                                        homePageActivity.class);
-                                drinkIntent.putExtra("Id", propertiesArrayList.get(i).getId());
-                                startActivity(drinkIntent);
+                                Intent propertyIntent = new Intent(homePageActivity.this,
+                                        addProportyActivity.class);
+                                propertyIntent.putExtra("Id", propertiesArrayList.get(i).getId());
+                                propertyIntent.putExtra("Type", propertiesArrayList.get(i).getType());
+                                propertyIntent.putExtra("Area", (propertiesArrayList.get(i).getArea()));
+                                propertyIntent.putExtra("Bathnum", propertiesArrayList.get(i).getBathrooms_nb());
+                                propertyIntent.putExtra("Bednum", propertiesArrayList.get(i).getBedrooms_nb());
+                                propertyIntent.putExtra("Furn", propertiesArrayList.get(i).getFurnishings());
+                                propertyIntent.putExtra("img", propertiesArrayList.get(i).getImages_url());
+                                propertyIntent.putExtra("Price", propertiesArrayList.get(i).getPrice());
+                                propertyIntent.putExtra("Title", propertiesArrayList.get(i).getTitle());
+
+                                startActivity(propertyIntent);
                             }
                         };
                         listViewproperties.setOnItemClickListener(itemClickListener);
@@ -97,7 +106,11 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
         );
         requestQueue.add(propertyJSONRequest);
     }
-    public void addPropertyClick(View v){ addProperty.putExtra("id",0);startActivity(addProperty); }
+
+    public void addPropertyClick(View v){
+        addProperty.putExtra("Id",0);
+        startActivity(addProperty);
+    }
 
 
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

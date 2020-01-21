@@ -7,7 +7,7 @@
     android:background="@color/color_white"
     android:focusable="auto"
     android:focusableInTouchMode="false"
-    tools:context=".homePageActivity">
+    tools:context=".addProportyActivity">
 
     <TextView
         android:id="@+id/pagetitle"
@@ -23,25 +23,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/addEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:layout_marginTop="178dp"
+        android:layout_marginBottom="37dp"
         android:background="@drawable/button_background"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
-        android:text="Button"
+        android:text="add"
+        android:onClick="add"
         android:textColor="@color/color_white"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/area" />
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/titleeditText"
-        android:layout_width="107dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="75dp"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/input_background"
         android:ems="10"
         android:hint="Title"
@@ -49,15 +50,16 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pagetitle" />
+        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/price"
-        android:layout_width="107dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="38dp"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/input_background"
         android:ems="10"
         android:hint="price"
@@ -65,47 +67,16 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleeditText" />
-
-    <EditText
-        android:id="@+id/furnishing"
-        android:layout_width="233dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="41dp"
-        android:background="@drawable/input_background"
-        android:ems="10"
-        android:hint="furnishing"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toEndOf="@+id/price"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
-
-    <EditText
-        android:id="@+id/bedroom_nb"
-        android:layout_width="137dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/input_background"
-        android:ems="10"
-        android:hint="bedrooms "
-        android:inputType="textPersonName"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price" />
+        app:layout_constraintBottom_toTopOf="@+id/furnishing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/bathrooms_nb"
-        android:layout_width="194dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/input_background"
         android:ems="10"
         android:hint="bathrooms number"
@@ -113,15 +84,33 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toEndOf="@+id/bedroom_nb"
-        app:layout_constraintTop_toBottomOf="@+id/furnishing" />
+        app:layout_constraintBottom_toTopOf="@+id/area"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/bedroom_nb"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/input_background"
+        android:ems="10"
+        android:hint="bedrooms "
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/bathrooms_nb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/area"
-        android:layout_width="107dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="89dp"
         android:background="@drawable/input_background"
         android:ems="10"
         android:hint="area"
@@ -129,20 +118,40 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bedroom_nb" />
+        app:layout_constraintBottom_toTopOf="@+id/addEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/furnishing"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/input_background"
+        android:ems="10"
+        android:hint="furnishing"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/bedroom_nb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="245dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="75dp"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/input_background"
         android:drawableStart="@drawable/downarrow"
         android:drawablePadding="10dp"
-        app:layout_constraintStart_toEndOf="@+id/titleeditText"
-        app:layout_constraintTop_toBottomOf="@+id/pagetitle" />
+        app:layout_constraintBottom_toTopOf="@+id/price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView7"
