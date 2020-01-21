@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,10 +38,26 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
     Button searchButton;
     EditText searchInput;
     private ListView listViewproperties;
+    private ArrayAdapter propertyAdapter;
+    private ListView myproperties;
+    private TextView usernametext;
+    private TextView mypropertiestext;
+    private Button signOut;
+    private ImageView p;
+    private String user_id;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        user_id = currentFirebaseUser.getUid();
+        this.myproperties= (ListView) findViewById(R.id.myProperties);
+        usernametext =(TextView) findViewById(R.id.usernametext);
+        p = (ImageView) findViewById(R.id.profileimage);
+        mypropertiestext=(TextView) findViewById(R.id.mypropertiestext);
+        signOut = (Button) findViewById(R.id.signout);
         searchButton = (Button) findViewById(R.id.searchButton);
         searchInput =(EditText) findViewById(R.id.searchInput);
         searchButton.setVisibility(View.GONE);
@@ -79,7 +98,7 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
                                 e.printStackTrace();
                             }
                         }
-                        ArrayAdapter propertyAdapter =
+                         propertyAdapter =
                                 new ArrayAdapter(homePageActivity.this,
                                         android.R.layout.simple_list_item_1,
                                         propertiesArrayList);
@@ -124,16 +143,21 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
         switch (item.getItemId()) {
             case R.id.navigation_home:
                 title.setText(getResources().getString(R.string.title_home));
+                hideProfileItem(1);
+                listViewproperties.setAdapter(propertyAdapter);
                 searchButton.setVisibility(View.GONE);
                 searchInput.setVisibility(View.GONE);
                 return true;
             case R.id.navigation_profile:
+                mypropertiies();
                 title.setText(getResources().getString(R.string.title_profile));
+                hideProfileItem(0);
                 searchButton.setVisibility(View.GONE);
                 searchInput.setVisibility(View.GONE);
                 return true;
             case R.id.navigation_search:
                 title.setText(getResources().getString(R.string.title_search));
+                hideProfileItem(1);
                 searchButton.setVisibility(View.VISIBLE);
                 searchInput.setVisibility(View.VISIBLE);
                 return true;
@@ -148,19 +172,68 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
         }else{
             String name = (editTextId.getText().toString());
             for(property property: propertiesArrayList){
-                System.out.println("/////////////////iteration/////////////");
-                if(property.getTitle().equals(name)){
-                    Toast.makeText(this, "one thing found", Toast.LENGTH_LONG).show();
+                if(property.getTitle().equals(name)) {
                     searched.add(property);
                 }
             }
+        }
+        if (searched.isEmpty()){
+            Toast.makeText(this, "No property have this name", Toast.LENGTH_LONG).show();
+        }
+        else {
             ArrayAdapter searchedpropertyAdapter =
                     new ArrayAdapter(homePageActivity.this,
                             android.R.layout.simple_list_item_1,
                             searched);
             this.listViewproperties.setAdapter(searchedpropertyAdapter);
-            Toast.makeText(this, "No property have this name", Toast.LENGTH_LONG).show();
         }
-    }
 
+    }
+    public void mypropertiies(){
+        ArrayList myproperties = new ArrayList();
+        EditText editTextId = (EditText) findViewById(R.id.searchInput);
+        if(this.user_id.equals("")){
+            Toast.makeText(this,"You have to sign in first", Toast.LENGTH_SHORT).show();
+        }else{
+            for(property property: propertiesArrayList){
+                if(property.getUser_id().equals(this.user_id)) {
+                    myproperties.add(property);
+                }
+            }
+        }
+        if (myproperties.isEmpty()){
+            Toast.makeText(this, "You have No property in your account ", Toast.LENGTH_LONG).show();
+        }
+        else {
+            ArrayAdapter searchedpropertyAdapter =
+                    new ArrayAdapter(homePageActivity.this,
+                            android.R.layout.simple_list_item_1,
+                            myproperties);
+            this.myproperties.setAdapter(searchedpropertyAdapter);
+        }
+
+    }
+    public void hideProfileItem(int i){
+        if (i == 1) {
+            this.myproperties.setVisibility(View.GONE);
+            usernametext.setVisibility(View.GONE);
+            mypropertiestext.setVisibility(View.GONE);
+            signOut.setVisibility(View.GONE);
+            p.setVisibility(View.GONE);
+            listViewproperties.setVisibility(View.VISIBLE);
+        }
+        else {
+            this.myproperties.setVisibility(View.VISIBLE);
+            listViewproperties.setVisibility(View.GONE);
+            usernametext.setVisibility(View.VISIBLE);
+            mypropertiestext.setVisibility(View.VISIBLE);
+            signOut.setVisibility(View.VISIBLE);
+            p.setVisibility(View.VISIBLE);
+        }
+
+    }
+    public void SignOut(View v){
+        FirebaseAuth.getInstance().signOut();
+        Intent signin = new Intent(homePageActivity.this,welcomePageActivity.class);
+    }
 }
