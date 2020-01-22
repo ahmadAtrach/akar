@@ -191,7 +191,7 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
 
     }
     public void mypropertiies(){
-        ArrayList myproperties = new ArrayList();
+        final ArrayList<property> myproperties = new ArrayList();
         EditText editTextId = (EditText) findViewById(R.id.searchInput);
         if(this.user_id.equals("")){
             Toast.makeText(this,"You have to sign in first", Toast.LENGTH_SHORT).show();
@@ -211,6 +211,27 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
                             android.R.layout.simple_list_item_1,
                             myproperties);
             this.myproperties.setAdapter(searchedpropertyAdapter);
+            AdapterView.OnItemClickListener itemClickListener
+                    = new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent propertyIntent = new Intent(homePageActivity.this,
+                            addProportyActivity.class);
+                    propertyIntent.putExtra("Id", myproperties.get(i).getId());
+                    propertyIntent.putExtra("Type", myproperties.get(i).getType());
+                    propertyIntent.putExtra("Area", (myproperties.get(i).getArea()));
+                    propertyIntent.putExtra("Bathnum", myproperties.get(i).getBathrooms_nb());
+                    propertyIntent.putExtra("Bednum", myproperties.get(i).getBedrooms_nb());
+                    propertyIntent.putExtra("Furn", myproperties.get(i).getFurnishings());
+                    propertyIntent.putExtra("img", myproperties.get(i).getImages_url());
+                    propertyIntent.putExtra("Price", myproperties.get(i).getPrice());
+                    propertyIntent.putExtra("Title", myproperties.get(i).getTitle());
+                    propertyIntent.putExtra("img",myproperties.get(i).getImages_url());
+
+                    startActivity(propertyIntent);
+                }
+            };
+            this.myproperties.setOnItemClickListener(itemClickListener);
         }
 
     }
