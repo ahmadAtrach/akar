@@ -257,5 +257,6 @@ public class homePageActivity extends AppCompatActivity implements BottomNavigat
     public void SignOut(View v){
         FirebaseAuth.getInstance().signOut();
         Intent signin = new Intent(homePageActivity.this,welcomePageActivity.class);
+        startActivity(signin);
     }
 }

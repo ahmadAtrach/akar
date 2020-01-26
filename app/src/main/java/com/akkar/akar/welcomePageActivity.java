@@ -18,7 +18,7 @@ public class welcomePageActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_welcome_page);
         getSupportActionBar().hide();
         mAuth = FirebaseAuth.getInstance();
-        //FirebaseAuth.getInstance().signOut();
+//        FirebaseAuth.getInstance().signOut();
         findViewById(R.id.sign_in).setOnClickListener(this);
         findViewById(R.id.sign_up).setOnClickListener(this);
     }

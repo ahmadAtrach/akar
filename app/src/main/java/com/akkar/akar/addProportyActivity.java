@@ -1,11 +1,16 @@
 package com.akkar.akar;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,9 +28,15 @@ import com.google.firebase.auth.FirebaseUser;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-public class addProportyActivity extends AppCompatActivity {
+public class addProportyActivity extends AppCompatActivity implements View.OnClickListener {
     Spinner spinner;
     private RequestQueue requestQueue;
     private EditText title;
@@ -36,17 +47,26 @@ public class addProportyActivity extends AppCompatActivity {
     private EditText bathnum;
     private EditText area;
     private String user_id;
-    private String imagurl = "";
+    private int Id;
     private FirebaseAuth mAuth;
     private TextView pagetitle;
-    private int Id;
+    ImageView imageView;
     private int a;
     Button b;
+    private int PICK_IMAGE_REQUEST = 1;
+    private Bitmap bitmap;
+    private Uri filePath;
+    private Button buttonChoose;
+    Date n= new Date();
+    String c = Long.toString(n.getTime());
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_proporty);
         getSupportActionBar().hide();
+        buttonChoose = (Button) findViewById(R.id.buttonChoose);
+         imageView = (ImageView) findViewById(R.id.imageView);
+        buttonChoose.setOnClickListener(this);
         b= findViewById(R.id.addEdit);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -116,7 +136,7 @@ public class addProportyActivity extends AppCompatActivity {
         type = spinner.getSelectedItem().toString();
         user_id = this.user_id;
         int id=this.Id;
-        image= this.imagurl;
+        image= Id+".jpg";
         if(title.isEmpty())
                 {
             Toast.makeText(this,"Please fill all the inputs",Toast.LENGTH_SHORT).show();
@@ -158,10 +178,11 @@ public class addProportyActivity extends AppCompatActivity {
                                     jsonObject.put("area", area);
                                     jsonObject.put("user_id", user_id);
                                     jsonObject.put("title", title);
-                                    jsonObject.put("images_url", image);
+                                    jsonObject.put("images_url",c+".jpg");
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
+                                makeRequest();
                                 return jsonObject.toString().getBytes();
                             }
                         };
@@ -203,10 +224,11 @@ public class addProportyActivity extends AppCompatActivity {
                                     jsonObject.put("area", area);
                                     jsonObject.put("user_id", user_id);
                                     jsonObject.put("title", title);
-                                    jsonObject.put("images_url", image);
+                                    jsonObject.put("images_url", c+".jpg");
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
+                                makeRequest();
                                 return jsonObject.toString().getBytes();
                             }
                         };
@@ -215,7 +237,61 @@ public class addProportyActivity extends AppCompatActivity {
 
         }
     }
+    private void showFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+    public void onClick(View v) {
+        if (v == buttonChoose) {
+            showFileChooser();
+        }
+    }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            filePath = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    private void makeRequest() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest request = new StringRequest(Request.Method.POST, "http://akarr.000webhostapp.com/imageuploader.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> map = new HashMap<>();
+                map.put("encoded_string",getStringImage(bitmap));
+                map.put("image_name",(c+".jpg").toString());
+                return map;
+            }
+        };
+        requestQueue.add(request);
+    }
+    public String getStringImage(Bitmap bmp) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
+    }
 }
 
